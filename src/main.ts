@@ -1,4 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import VueFields from './vue-fields';
+import Demo from './Demo.vue';
 
-createApp(App).mount('#app')
+console.log('Hello World!');
+
+createApp(Demo)
+  .use(VueFields)
+  .mount('#app')

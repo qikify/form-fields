@@ -1,0 +1,26 @@
+.vfield(
+  :id="fieldId",
+  :class="[fieldClass, 'vfield--' + type]",
+)
+  slot(name="label")
+    block heading
+      label.vfield__label(
+        v-if="label",
+        :for="fieldId",
+      )
+        span(v-html="label")
+        template(v-if="isRequired")
+        span.vfield__asterisk *
+
+  slot
+    .vfield__input
+      block input
+
+  slot(name="error")
+    block error
+
+  slot(name="description")
+    .vfield__description(
+      v-if="description",
+      v-html="description",
+    )
