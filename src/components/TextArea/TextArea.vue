@@ -9,6 +9,8 @@ block input
 <script setup lang="ts">
 import {
   useLocalValue,
+  useFieldId,
+  useFieldClass,
 } from '@/utilities/hooks';
 
 interface Props {
@@ -34,11 +36,13 @@ interface Props {
   rows?: number;
 }
 
-export interface Emits {
+interface Emits {
   (event: 'update:modelValue', value: string): void
 }
 
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits);
+const fieldId = useFieldId();
+const fieldClass = useFieldClass(props);
 </script>

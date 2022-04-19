@@ -13,7 +13,7 @@ block input
     img.img-thumbnail(:src="localValue.url")
 </template>
 <script lang="ts" setup>
-import { useLocalValue } from '@/utilities/hooks';
+import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -33,9 +33,6 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
-
-  //extra props
-  valueLabel: string;
 }
 
 interface Emits {
@@ -61,4 +58,6 @@ const removeImage = (elmId: string) => {
   document.getElementById(elmId).value = null;
   localValue.value = null;
 }
+const fieldId = useFieldId();
+const fieldClass = useFieldClass(props);
 </script>

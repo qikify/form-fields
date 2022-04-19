@@ -8,7 +8,7 @@ component(
     :key="index",
     v-slot:[slot.name],
   )
-    component(v-html="slot.content")
+    div(v-html="slot.content")
 </template>
 
 <script setup lang="ts">

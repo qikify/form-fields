@@ -11,7 +11,7 @@ block input
       label.form-check-label(:for="`${name}-toggle`") {{valueLabel}}
 </template>
 <script lang="ts" setup>
-import { useLocalValue } from '@/utilities/hooks';
+import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -23,7 +23,7 @@ interface Props {
   fieldType?: string;
 
   /** Model for the input */
-  modelValue?: string;
+  modelValue?: boolean;
 
   isRequired?: boolean;
   className?: string;
@@ -42,4 +42,6 @@ interface Emits {
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits, null);
+const fieldId = useFieldId();
+const fieldClass = useFieldClass(props);
 </script>

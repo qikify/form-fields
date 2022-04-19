@@ -21,7 +21,7 @@ block input
           span {{option.label}}
 </template>
 <script lang="ts" setup>
-import { useLocalValue } from '@/utilities/hooks';
+import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -57,4 +57,6 @@ interface Emits {
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits, null);
+const fieldId = useFieldId();
+const fieldClass = useFieldClass(props);
 </script>
