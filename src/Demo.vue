@@ -4,7 +4,7 @@ div
   VField(
     v-for="option in options",
     :option="option",
-    :key="option.key",
+    :key="option.name",
     v-model="data[option.name]"
   )
 
