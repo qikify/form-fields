@@ -1,15 +1,14 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .form-check(v-for="option in options")
-    input.form-check-input(
-      type='checkbox'
-      :name="name"
-      :value="option.value"
-      :id="`${name}-${option.id}`"
-      v-model="localValue"
-    )
-    label.form-check-label(:for="`${name}-${option.id}`") {{option.label}}
+  .checkbox-wrapper
+    .form-check.form-switch
+      input.form-check-input(
+          type='checkbox'
+          v-model="localValue"
+          :id="`${name}-toggle`"
+      )
+      label.form-check-label(:for="`${name}-toggle`") {{valueLabel}}
 </template>
 <script lang="ts" setup>
 import { useLocalValue } from '@/utilities/hooks';
@@ -33,12 +32,8 @@ interface Props {
   description?: string;
   readonly?: boolean;
 
-  /** Extra options **/
-  options: Array<{
-    label: string;
-    value: string;
-    id: string;
-  }>;
+  //extra props
+  valueLabel: string;
 }
 
 interface Emits {

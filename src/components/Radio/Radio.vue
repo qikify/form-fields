@@ -1,15 +1,18 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .form-check(v-for="option in options")
-    input.form-check-input(
-      type='checkbox'
-      :name="name"
-      :value="option.value"
-      :id="`${name}-${option.id}`"
-      v-model="localValue"
-    )
-    label.form-check-label(:for="`${name}-${option.id}`") {{option.label}}
+  .radio-wrapper
+    .form-check(v-for="option in options")
+        input.form-check-input(
+            type='radio'
+            :name='name'
+            :value="option.value"
+            v-model="localValue"
+            :id="`${name}-${option.id}`"
+        )
+        label.form-check-label(
+            :for="`${name}-${option.id}`"
+        ) {{option.label}}
 </template>
 <script lang="ts" setup>
 import { useLocalValue } from '@/utilities/hooks';

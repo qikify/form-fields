@@ -1,15 +1,24 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .form-check(v-for="option in options")
-    input.form-check-input(
-      type='checkbox'
-      :name="name"
-      :value="option.value"
-      :id="`${name}-${option.id}`"
-      v-model="localValue"
-    )
-    label.form-check-label(:for="`${name}-${option.id}`") {{option.label}}
+  .radio-image-wrapper.d-flex.flex-wrap.mb-3
+    .radio-image.d-flex.flex-column.mx-2.btn(v-for="option in options")
+      input.btn-check(
+        type="radio"
+        :name="name"
+        :id="name + '-' + option.id"
+        v-model="localValue"
+        :value="option.value"
+      )
+      label.vfield__btn(
+        :for="name + '-' + option.id"
+      )
+        img.img-thumbnail(
+          :src="option.image"
+          :class="{'border border-primary': option.value === modelValue}"
+        )
+        .title
+          span {{option.label}}
 </template>
 <script lang="ts" setup>
 import { useLocalValue } from '@/utilities/hooks';
@@ -37,6 +46,7 @@ interface Props {
   options: Array<{
     label: string;
     value: string;
+    image: string;
     id: string;
   }>;
 }

@@ -1,3 +1,20 @@
 .vfield__control {
   @extend .form-control;
 }
+.vfield__btn {
+  cursor: pointer;
+  &--close {
+    @extend .vfield__btn;
+    padding: 0.25rem;
+    border-radius: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    position: absolute;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+  }
+}

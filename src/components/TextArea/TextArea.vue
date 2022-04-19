@@ -1,18 +1,15 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .form-check(v-for="option in options")
-    input.form-check-input(
-      type='checkbox'
-      :name="name"
-      :value="option.value"
-      :id="`${name}-${option.id}`"
-      v-model="localValue"
-    )
-    label.form-check-label(:for="`${name}-${option.id}`") {{option.label}}
+  textarea.vfield__control(
+    v-model="localValue"
+    :rows="rows || 3"
+  )
 </template>
-<script lang="ts" setup>
-import { useLocalValue } from '@/utilities/hooks';
+<script setup lang="ts">
+import {
+  useLocalValue,
+} from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -33,18 +30,15 @@ interface Props {
   description?: string;
   readonly?: boolean;
 
-  /** Extra options **/
-  options: Array<{
-    label: string;
-    value: string;
-    id: string;
-  }>;
+  //extra props
+  rows?: number;
 }
 
-interface Emits {
+export interface Emits {
   (event: 'update:modelValue', value: string): void
 }
+
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
-const localValue = useLocalValue(props, emits, null);
+const localValue = useLocalValue(props, emits);
 </script>
