@@ -6,6 +6,7 @@ div
     :option="option",
     :key="option.key",
     v-model="data[option.name]"
+    :data = "data"
   )
 
   pre {{ data }}
@@ -57,6 +58,17 @@ const options = ref([
         image: 'https://picsum.photos/34/34',
       },
     ],
+  },
+  {
+    name: 'image_upload',
+    type: 'ImageUpload',
+    heading: 'ImageUpload',
+    label: 'Image Upload',
+    defaultValue: "https://picsum.photos/200",
+    dependency: {
+      name: 'radio_image',
+      value: 'value3',
+    },
   },
   {
     name: 'radio_button',
@@ -149,13 +161,6 @@ const options = ref([
     valueLabel: "this is toggle",
   },
   {
-    name: 'image_upload',
-    type: 'ImageUpload',
-    heading: 'ImageUpload',
-    label: 'Image Upload',
-    defaultValue: "https://picsum.photos/200",
-  },
-  {
     name: 'textarea',
     type: 'TextArea',
     heading: 'TextArea',
@@ -207,6 +212,10 @@ const options = ref([
         heading: 'ColorPicker',
         label: 'ColorPicker',
         defaultValue: '#ff0000',
+        dependency: {
+          name: "toggle",
+          value: true,
+        },
       },
     ],
   },

@@ -4,7 +4,8 @@ block input
   VField(
     v-for="field in fields",
     :option="{...field, group: name}",
-    v-model="data[field.name]"
+    v-model="data[field.name]",
+    :data="data"
   )
 </template>
 <script lang="ts" setup>

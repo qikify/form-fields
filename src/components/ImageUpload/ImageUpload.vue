@@ -6,6 +6,7 @@ block input
     type="file",
     :id="`${name}-image-upload`"
     @change="onChangeImage"
+    accept="image/*"
   )
   .vfield__img-peview-wrapper(v-if="localValue")
     .vfield__btn.vfield__btn--close(@click="removeImage(`${name}-image-upload`)")
