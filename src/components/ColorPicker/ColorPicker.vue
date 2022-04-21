@@ -1,16 +1,16 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .input-group-text
-    input.form-control.form-control-color(
+  .vfield__input-group-text
+    input.vfield__control.vfield__control-color(
         type='color'
         v-model="localValue"
-        title='Choose your color'
+        :title="label"
     )
-    input.form-control(
+    input.vfield__control(
       type='text'
-      placeholder='Type your color'
-      aria-label='YourColor'
+      :placeholder="placeholder"
+      :aria-label="label"
       v-model="localValue"
     )
 </template>
@@ -22,11 +22,7 @@ interface Props {
   id?: string;
   name?: string;
   label?: string;
-
-  // /** The type of the field to put on [input type="text|date|number"]. */
   fieldType?: string;
-
-  /** Model for the input */
   modelValue?: string;
 
   isRequired?: boolean;

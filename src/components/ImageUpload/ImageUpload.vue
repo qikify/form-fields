@@ -1,18 +1,19 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .image-upload__wrapper
+  .vfield__image-upload-wrapper
   input.vfield__control.mb-3(
     type="file",
     :id="`${name}-image-upload`"
     @change="onChangeImage"
   )
-  .img-peview__wrapper(v-if="localValue && localValue.url")
+  .vfield__img-peview-wrapper(v-if="localValue")
     .vfield__btn.vfield__btn--close(@click="removeImage(`${name}-image-upload`)")
-      i.bi.bi-x-circle
-    img.img-thumbnail(:src="localValue.url")
+      img(src="../../assets/icons/x-circle.svg")
+    img.vfield__img-thumbnail(:src="localValue")
 </template>
 <script lang="ts" setup>
+import { inject } from 'vue';
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
@@ -20,11 +21,7 @@ interface Props {
   id?: string;
   name?: string;
   label?: string;
-
-  // /** The type of the field to put on [input type="text|date|number"]. */
   fieldType?: string;
-
-  /** Model for the input */
   modelValue?: string;
 
   isRequired?: boolean;
@@ -41,22 +38,19 @@ interface Emits {
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits, null);
+const options: any = inject('vueFieldConfigs');
 
-const onChangeImage = (e: any) => {
-  if (localValue.value && localValue.value.url) {
-    URL.revokeObjectURL(localValue.value.url)
-  }
+const onChangeImage = async (e: any) => {
   const file = e.target.files[0];
-  const imageInfo = {
-    file,
-    url: URL.createObjectURL(file),
-  };
-  localValue.value = imageInfo;
+  const imageUrl = await options.imageUpload(file);
+  console.log(imageUrl)
+  localValue.value = imageUrl;
 }
 
-const removeImage = (elmId: string) => {
+const removeImage = async (elmId: string) => {
   document.getElementById(elmId).value = null;
-  localValue.value = null;
+  await options.imageRemove(localValue.value)
+  localValue.value = '';
 }
 const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);

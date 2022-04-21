@@ -1,14 +1,14 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .checkbox-wrapper
-    .form-check.form-switch
-      input.form-check-input(
+  .vfield__toggle-wrapper
+    .vfield__check.vfield__switch
+      input.vfield__check-input(
           type='checkbox'
           v-model="localValue"
           :id="`${name}-toggle`"
       )
-      label.form-check-label(:for="`${name}-toggle`") {{valueLabel}}
+      label.vfield__check-label(:for="`${name}-toggle`") {{valueLabel}}
 </template>
 <script lang="ts" setup>
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
@@ -18,11 +18,7 @@ interface Props {
   id?: string;
   name?: string;
   label?: string;
-
-  // /** The type of the field to put on [input type="text|date|number"]. */
   fieldType?: string;
-
-  /** Model for the input */
   modelValue?: boolean;
 
   isRequired?: boolean;
@@ -32,7 +28,6 @@ interface Props {
   description?: string;
   readonly?: boolean;
 
-  //extra props
   valueLabel: string;
 }
 

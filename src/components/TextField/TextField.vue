@@ -19,11 +19,7 @@ interface Props {
   id?: string;
   name?: string;
   label?: string;
-
-  // /** The type of the field to put on [input type="text|date|number"]. */
   fieldType?: string;
-
-  /** Model for the input */
   modelValue?: string;
 
   isRequired?: boolean;

@@ -1,17 +1,17 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .radio-image-wrapper.d-flex.flex-wrap.mb-3
-    .radio-button.d-inline-block.flex-column.mx-2(v-for="option in options")
-      input.btn-check(
+  .vfield__radio-button-wrapper
+    .vfield__radio-button(v-for="option in options")
+      input.vfield__btn-check(
           type='radio'
           :name='name'
           :value="option.value"
           v-model="localValue"
-          :id="`${name}-${option.id}`"
+          :id="`${name}-${option.value}`"
       )
-      label.btn.btn-outline-primary(
-          :for="`${name}-${option.id}`"
+      label.vfield__btn.vfield__btn--outline-primary(
+          :for="`${name}-${option.value}`"
       ) {{option.label}}
 </template>
 <script lang="ts" setup>
@@ -22,11 +22,7 @@ interface Props {
   id?: string;
   name?: string;
   label?: string;
-
-  // /** The type of the field to put on [input type="text|date|number"]. */
   fieldType?: string;
-
-  /** Model for the input */
   modelValue?: string;
 
   isRequired?: boolean;
@@ -36,11 +32,9 @@ interface Props {
   description?: string;
   readonly?: boolean;
 
-  /** Extra options **/
   options: Array<{
     label: string;
     value: string;
-    id: string;
   }>;
 }
 

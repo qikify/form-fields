@@ -112,10 +112,10 @@ const options = ref([
     defaultValue: '#ff0000',
   },
   {
-    name: 'check_box',
-    type: 'Checkbox',
-    heading: 'CheckBox',
-    label: 'Check Box',
+    name: 'Choices',
+    type: 'Choices',
+    heading: 'Choices',
+    label: 'Choices',
     defaultValue: [],
     options: [
       {
@@ -148,6 +148,7 @@ const options = ref([
     type: 'ImageUpload',
     heading: 'ImageUpload',
     label: 'Image Upload',
+    defaultValue: "https://picsum.photos/200",
   },
   {
     name: 'textarea',
