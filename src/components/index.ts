@@ -9,3 +9,5 @@ export * from './Choices';
 export * from './Toggle';
 export * from './ImageUpload';
 export * from './TextArea';
+export * from './Divider';
+export * from './Group';

@@ -6,9 +6,9 @@ block input
       input.vfield__check-input(
           type='checkbox'
           v-model="localValue"
-          :id="`${name}-toggle`"
+          :id="`${group ? group + '-' : ''}${name}-toggle`"
       )
-      label.vfield__check-label(:for="`${name}-toggle`") {{valueLabel}}
+      label.vfield__check-label(:for="`${group ? group + '-' : ''}${name}-toggle`") {{valueLabel}}
 </template>
 <script lang="ts" setup>
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
@@ -27,6 +27,7 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+  group?:string;
 
   valueLabel: string;
 }

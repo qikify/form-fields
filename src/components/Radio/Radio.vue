@@ -8,10 +8,10 @@ block input
             :name='name'
             :value="option.value"
             v-model="localValue"
-            :id="`${name}-${option.value}`"
+            :id="`${group ? group + '-' : ''}${name}-${option.value}`"
         )
         label.vfield__check-label(
-            :for="`${name}-${option.value}`"
+            :for="`${group ? group + '-' : ''}${name}-${option.value}`"
         ) {{option.label}}
 </template>
 <script lang="ts" setup>
@@ -31,6 +31,7 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+  group?: string;
 
   options: Array<{
     label: string;

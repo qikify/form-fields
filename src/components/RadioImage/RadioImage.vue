@@ -6,12 +6,12 @@ block input
       input.vfield__btn-check(
         type="radio"
         :name="name"
-        :id="name + '-' + option.value"
+        :id="(group ? group + '-' : '') + name + '-' + option.value"
         v-model="localValue"
         :value="option.value"
       )
       label.vfield__btn(
-        :for="name + '-' + option.value"
+        :for="(group ? group + '-' : '') + name + '-' + option.value"
       )
         img.vfield__img-thumbnail(
           :src="option.image"
@@ -37,6 +37,7 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+  group?: string;
 
   options: Array<{
     label: string;

@@ -55,3 +55,10 @@
   
   margin: 0 0.5rem;
 }
+
+.vfield__divider {
+  border-bottom-width: 0.125rem;
+  border-bottom-color: var(--vfield-border-color);
+  border-bottom-style: var(--vfield-border-style);
+  margin: 1rem 0;
+}

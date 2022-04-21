@@ -1,18 +1,16 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  .vfield__check(v-for="option in options")
-    input.vfield__check-input(
-      type='checkbox'
-      :name="name"
-      :value="option.value"
-      :id="`${group ? group + '-' : ''}${name}-${option.value}`"
-      v-model="localValue"
-    )
-    label.vfield__check-label(:for="`${group ? group + '-' : ''}${name}-${option.value}`") {{option.label}}
+  VField(
+    v-for="field in fields",
+    :option="{...field, group: name}",
+    v-model="data[field.name]"
+  )
 </template>
 <script lang="ts" setup>
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
+import { reactive } from 'vue';
+import VField from '../../VField.vue';
 
 interface Props {
   type: string;
@@ -28,20 +26,28 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
-  group?: string;
 
-  options: Array<{
-    label: string;
-    value: string;
-  }>;
+  fields: Array<object>
 }
 
 interface Emits {
   (event: 'update:modelValue', value: string): void
 }
+
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
-const localValue = useLocalValue(props, emits, null);
 const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);
+const localValue = useLocalValue(props, emits, null);
+
+const defaultData = props.fields.reduce((acc, field) => {
+  if (field.defaultValue) {
+    acc[field.name] = field.defaultValue;
+  }
+
+  return acc;
+}, {});
+
+const data = reactive(defaultData);
+localValue.value = data;
 </script>

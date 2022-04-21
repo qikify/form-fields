@@ -112,6 +112,11 @@ const options = ref([
     defaultValue: '#ff0000',
   },
   {
+    name: 'divider',
+    type: 'Divider',
+    dividerStyle: 'dotted',
+  },
+  {
     name: 'Choices',
     type: 'Choices',
     heading: 'Choices',
@@ -157,6 +162,53 @@ const options = ref([
     label: 'Text Area',
     defaultValue: 'This is text area',
     rows: 3,
+  },
+  {
+    name: 'group',
+    type: 'Group',
+    heading: 'Group',
+    label: 'Group',
+    fields: [
+      {
+        name: 'toggle',
+        type: 'Toggle',
+        heading: 'Toggle',
+        label: 'Toggle',
+        defaultValue: true,
+        valueLabel: "this is toggle",
+      },
+      {
+        name: 'Choices',
+        type: 'Choices',
+        heading: 'Choices',
+        label: 'Choices',
+        defaultValue: [],
+        options: [
+          {
+            label: 'Option 1',
+            value: 'value1',
+            id: 'option-1',
+          },
+          {
+            label: 'Option 2',
+            value: 'value2',
+            id: 'option-2',
+          },
+          {
+            label: 'Option 3',
+            value: 'value3',
+            id: 'option-3',
+          },
+        ],
+      },
+      {
+        name: 'color_picker',
+        type: 'ColorPicker',
+        heading: 'ColorPicker',
+        label: 'ColorPicker',
+        defaultValue: '#ff0000',
+      },
+    ],
   },
 ]);
 
