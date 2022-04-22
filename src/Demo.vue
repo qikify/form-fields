@@ -172,7 +172,8 @@ const options = ref([
     name: 'group',
     type: 'Group',
     heading: 'Group',
-    label: 'Group',
+    label: '<strong style="color: red">This is group</strong>',
+    description: '<span style="color: blue">This is description of group</span>',
     fields: [
       {
         name: 'toggle',
