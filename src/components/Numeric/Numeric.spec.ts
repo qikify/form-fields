@@ -3,5 +3,6 @@ import Numeric from './Numeric.vue';
 
 describe('Numeric', () => {
   it('should be defined', () => {
+    // TODO numeric field
   });
 });
