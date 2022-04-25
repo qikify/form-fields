@@ -1,6 +1,7 @@
 import type { App, Component } from 'vue';
 import * as components from './components';
 import VField from './VField.vue';
+import isVisible from './use/isVisible';
 
 import './scss/_index.scss'
 
@@ -21,7 +22,10 @@ const VueFieldPlugin = {
 export * from './components';
 
 // Export VField
-export { VField };
+export {
+  VField,
+  isVisible,
+};
 
 // Export all
 export default VueFieldPlugin;

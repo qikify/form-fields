@@ -30,13 +30,13 @@ interface Props {
   readonly?: boolean;
 }
 
-export interface Emits {
+interface Emits {
   (event: 'update:modelValue', value: string): void
 }
 
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
-const localValue = useLocalValue(props, emits);
+const localValue = useLocalValue(props, emits, null);
 const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);
 </script>

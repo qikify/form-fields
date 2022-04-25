@@ -16,7 +16,7 @@ div
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import VField from './VField.vue';
-import { isVisible } from './use/isVisible';
+import isVisible from './use/isVisible';
 
 const name = ref('custom input say hi');
 const options = ref([
@@ -225,7 +225,7 @@ const options = ref([
   },
 ]);
 
-const defaultData = options.value.reduce((acc, option) => {
+const defaultData = options.value.reduce((acc: any, option) => {
   if (option.defaultValue) {
     acc[option.name] = option.defaultValue;
   }

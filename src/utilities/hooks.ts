@@ -5,7 +5,7 @@ import { computed } from 'vue';
  *
  * @see: https://vanoneang.github.io/article/v-model-in-vue3.html#turn-it-into-a-composable
  */
-export function useLocalValue(props: any, emit: any, defaultValue: string | any) {
+export function useLocalValue(props: any, emit: any, defaultValue: any) {
   return computed({
     get: () => props.modelValue || defaultValue,
     set: (value) => {
@@ -14,7 +14,7 @@ export function useLocalValue(props: any, emit: any, defaultValue: string | any)
   });
 }
 
-export function useFieldId(prefix: string) {
+export function useFieldId(prefix?: string) {
   const p = prefix ? `${prefix}` : 'vfield';
 
   // Random 6 digit number

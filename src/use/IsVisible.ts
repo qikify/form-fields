@@ -1,4 +1,4 @@
-export const isVisible = (
+const isVisible = (
   data: Record<string, any>,
   option: Record<string, any>,
 ): boolean => {
@@ -15,3 +15,5 @@ export const isVisible = (
 
   return true;
 };
+
+export default isVisible;
