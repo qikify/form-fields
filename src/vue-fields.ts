@@ -5,13 +5,15 @@ import VField from './VField.vue';
 import './scss/_index.scss'
 
 const VueFieldPlugin = {
-  install(Vue: App) {
+  install(Vue: App, options: any) {
     for (const component in components) {
       const componentElement = components[component] as Component;
       Vue.component(component, componentElement);
     }
 
     Vue.component('VField', VField);
+
+    Vue.provide('vueFieldConfigs', options);
   },
 };
 

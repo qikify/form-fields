@@ -1,18 +1,18 @@
 <template lang="pug">
 component(
-  :is="generateFieldByType(option.type)",
-  v-bind="option",
+  :is="generateFieldByType(option.type)"
+  v-bind="option"
 )
   template(
     v-for="slot, index in option.slots",
     :key="index",
     v-slot:[slot.name],
   )
-    component(v-html="slot.content")
+    span(v-html="slot.content")
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance, defineProps } from 'vue';
+import { getCurrentInstance } from 'vue';
 
 const globalComponents = Object.keys(
   getCurrentInstance()?.appContext.components as Record<string, any>,

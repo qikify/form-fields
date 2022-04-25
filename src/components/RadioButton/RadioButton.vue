@@ -1,25 +1,21 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  pre before
-  pre {{ localValue }}
-  pre after
-  select.vfield__control(
-    v-model="localValue"
-  )
-    option(value="null", disabled) {{ placeholder }}
-    option(
-      v-for="option in options"
-      :value="option.value"
-    ) {{ option.label }}
+  .vfield__radio-button-wrapper
+    .vfield__radio-button(v-for="option in options")
+      input.vfield__btn-check(
+          type='radio'
+          :name='name'
+          :value="option.value"
+          v-model="localValue"
+          :id="`${group ? group + '-' : ''}${name}-${option.value}`"
+      )
+      label.vfield__btn.vfield__btn--outline-primary(
+          :for="`${group ? group + '-' : ''}${name}-${option.value}`"
+      ) {{option.label}}
 </template>
-<script setup lang="ts">
-import { computed, ref, watch, onMounted } from 'vue';
-import {
-  useLocalValue,
-  useFieldId,
-  useFieldClass,
-} from '@/utilities/hooks';
+<script lang="ts" setup>
+import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -35,6 +31,7 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+  group?: string;
 
   options: Array<{
     label: string;
@@ -42,10 +39,9 @@ interface Props {
   }>;
 }
 
-export interface Emits {
+interface Emits {
   (event: 'update:modelValue', value: string): void
 }
-
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits, null);

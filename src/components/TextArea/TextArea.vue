@@ -1,13 +1,12 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  input.vfield__control(
-    type="text"
+  textarea.vfield__control(
     v-model="localValue"
+    :rows="rows || 3"
   )
 </template>
 <script setup lang="ts">
-import { computed, ref, watch, onMounted } from 'vue';
 import {
   useLocalValue,
   useFieldId,
@@ -28,9 +27,11 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+
+  rows?: number;
 }
 
-export interface Emits {
+interface Emits {
   (event: 'update:modelValue', value: string): void
 }
 

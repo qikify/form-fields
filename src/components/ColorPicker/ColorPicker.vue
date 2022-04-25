@@ -1,18 +1,21 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  input.vfield__control(
-    type="text"
-    v-model="localValue"
-  )
+  .vfield__input-group-text
+    input.vfield__control.vfield__control-color(
+        type='color'
+        v-model="localValue"
+        :title="label"
+    )
+    input.vfield__control(
+      type='text'
+      :placeholder="placeholder"
+      :aria-label="label"
+      v-model="localValue"
+    )
 </template>
-<script setup lang="ts">
-import { computed, ref, watch, onMounted } from 'vue';
-import {
-  useLocalValue,
-  useFieldId,
-  useFieldClass,
-} from '@/utilities/hooks';
+<script lang="ts" setup>
+import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -30,13 +33,12 @@ interface Props {
   readonly?: boolean;
 }
 
-export interface Emits {
+interface Emits {
   (event: 'update:modelValue', value: string): void
 }
-
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
-const localValue = useLocalValue(props, emits);
+const localValue = useLocalValue(props, emits, null);
 const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);
 </script>

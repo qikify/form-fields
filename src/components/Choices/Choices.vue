@@ -1,25 +1,18 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  pre before
-  pre {{ localValue }}
-  pre after
-  select.vfield__control(
-    v-model="localValue"
-  )
-    option(value="null", disabled) {{ placeholder }}
-    option(
-      v-for="option in options"
+  .vfield__check(v-for="option in options")
+    input.vfield__check-input(
+      type='checkbox'
+      :name="name"
       :value="option.value"
-    ) {{ option.label }}
+      :id="`${group ? group + '-' : ''}${name}-${option.value}`"
+      v-model="localValue"
+    )
+    label.vfield__check-label(:for="`${group ? group + '-' : ''}${name}-${option.value}`") {{option.label}}
 </template>
-<script setup lang="ts">
-import { computed, ref, watch, onMounted } from 'vue';
-import {
-  useLocalValue,
-  useFieldId,
-  useFieldClass,
-} from '@/utilities/hooks';
+<script lang="ts" setup>
+import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 
 interface Props {
   type: string;
@@ -27,7 +20,7 @@ interface Props {
   name?: string;
   label?: string;
   fieldType?: string;
-  modelValue?: string;
+  modelValue?: any;
 
   isRequired?: boolean;
   className?: string;
@@ -35,6 +28,7 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+  group?: string;
 
   options: Array<{
     label: string;
@@ -42,10 +36,9 @@ interface Props {
   }>;
 }
 
-export interface Emits {
+interface Emits {
   (event: 'update:modelValue', value: string): void
 }
-
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits, null);

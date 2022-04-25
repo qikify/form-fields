@@ -1,0 +1,13 @@
+.vfield__img-peview-wrapper {
+    position: relative;
+
+    width: 50%;
+    max-width: 250px;
+    margin-top: 1rem;
+}
+
+.vfield__img-thumbnail {
+    @extend .img-thumbnail;
+    max-width: unset;
+    width: 100%;
+}

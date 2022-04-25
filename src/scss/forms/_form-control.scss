@@ -1,3 +1,64 @@
 .vfield__control {
   @extend .form-control;
+  &-color {
+    @extend .form-control-color;
+  }
+}
+.vfield__btn {
+  @extend .btn;
+  &--close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.25rem;
+    
+    border-radius: 50%;
+    background: #fff;
+  }
+  &--outline-primary{
+    @extend .btn-outline-primary;
+  }
+  &-check {
+    @extend .btn-check;
+  }
+  &--active {
+    border-color: $primary;
+  }
+}
+
+.vfield__check {
+  @extend .form-check;
+  &-input {
+    @extend .form-check-input;
+  };
+  &-label {
+    @extend .form-check-label;
+  }
+}
+
+.vfield__switch {
+  @extend .form-switch;
+}
+
+.vfield__input-group-text {
+  @extend .input-group-text;
+}
+
+.vfield__radio-button {
+  display: inline-block;
+  
+  margin: 0 0.5rem;
+}
+
+.vfield__divider {
+  border-bottom-width: 0.125rem;
+  border-bottom-color: var(--vfield-border-color);
+  border-bottom-style: var(--vfield-border-style);
+  margin: 1rem 0;
 }
