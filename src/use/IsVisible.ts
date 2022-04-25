@@ -9,11 +9,6 @@ export const isVisible = (
   const dependencyName = option.dependency.name;
   const dependencyValue = option.dependency.value;
 
-
-  if (Array.isArray(dependencyValue)) {
-    return dependencyValue.includes(data[dependencyName]);
-  }
-
   if (data[dependencyName] !== dependencyValue) {
     return false;
   }
