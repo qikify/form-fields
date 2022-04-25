@@ -37,7 +37,7 @@ interface Emits {
 
 const props = defineProps<Props>();
 const emits = defineEmits<Emits>();
-const localValue = useLocalValue(props, emits);
+const localValue = useLocalValue(props, emits, null);
 const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);
 </script>

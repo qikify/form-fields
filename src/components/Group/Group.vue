@@ -14,7 +14,7 @@ block input
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 import { reactive } from 'vue';
 import VField from '../../VField.vue';
-import { isVisible } from '../../use/IsVisible';
+import isVisible from '../../use/IsVisible';
 
 interface Props {
   type: string;
@@ -44,7 +44,7 @@ const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);
 const localValue = useLocalValue(props, emits, null);
 
-const defaultData = props.fields.reduce((acc, field) => {
+const defaultData = props.fields.reduce((acc: any, field: any) => {
   if (field.defaultValue) {
     acc[field.name] = field.defaultValue;
   }

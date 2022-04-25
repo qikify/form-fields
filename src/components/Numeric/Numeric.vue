@@ -22,7 +22,7 @@ block input
 // /**
 // * Testable
 // */
-const setValue = (value: number, min, max) => {
+const setValue = (value: number, min: number, max: number) => {
   if (min && value < min) {
     return min;
   }

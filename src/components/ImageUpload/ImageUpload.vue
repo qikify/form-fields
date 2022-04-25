@@ -49,7 +49,10 @@ const onChangeImage = async (e: any) => {
 }
 
 const removeImage = async (elmId: string) => {
-  document.getElementById(elmId).value = null;
+  const inputFile = (document.getElementById(elmId) as HTMLInputElement)
+  if (inputFile) {
+    inputFile.value = '';
+  }
   await options.imageRemove(localValue.value)
   localValue.value = '';
 }
