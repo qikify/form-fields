@@ -1,19 +1,22 @@
 <template lang="pug">
 div
   h1 Hello World should be injected
-  VField(
-    v-for="option in options",
-    :option="option",
-    :key="option.key",
-    v-model="data[option.name]"
-    :data = "data"
+  template(
+    v-for="option in options"
+    :key="option.key"
   )
+    VField(
+      v-if="isVisible(data, option)"
+      :option="option",
+      v-model="data[option.name]"
+    )
 
   pre {{ data }}
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import VField from './VField.vue';
+import { isVisible } from './use/isVisible';
 
 const name = ref('custom input say hi');
 const options = ref([

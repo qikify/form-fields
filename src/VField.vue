@@ -2,7 +2,6 @@
 component(
   :is="generateFieldByType(option.type)"
   v-bind="option"
-  v-if="isVisible(data, option)"
 )
   template(
     v-for="slot, index in option.slots",
@@ -14,7 +13,6 @@ component(
 
 <script setup lang="ts">
 import { getCurrentInstance } from 'vue';
-import { isVisible } from './use/IsVisible';
 
 const globalComponents = Object.keys(
   getCurrentInstance()?.appContext.components as Record<string, any>,
@@ -22,7 +20,6 @@ const globalComponents = Object.keys(
 
 interface Props {
   option: Record<string, any>,
-  data?: Record<string, any>,
 }
 
 const props = defineProps<Props>();

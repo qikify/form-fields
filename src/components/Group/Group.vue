@@ -1,17 +1,20 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  VField(
-    v-for="field in fields",
-    :option="{...field, group: name}",
-    v-model="data[field.name]",
-    :data="data"
+  template(
+    v-for="field in fields"
   )
+    VField(
+      v-if="isVisible(data, field)",
+      :option="{...field, group: name}",
+      v-model="data[field.name]"
+    )
 </template>
 <script lang="ts" setup>
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 import { reactive } from 'vue';
 import VField from '../../VField.vue';
+import { isVisible } from '../../use/IsVisible';
 
 interface Props {
   type: string;

@@ -8,12 +8,10 @@ createApp(Demo)
   .use(VueFields, {
     imageUpload: async (file: any) => {
       //upload file, then return image url
-      console.log(file);
-      return 'https://picsum.photos/' + (Math.floor(Math.random() * (50) ) + 150);
+      //eg: return 'https://picsum.photos/200'
     },
     imageRemove: async (imageUrl: string) => {
       //remove image
-      console.log('image removed: ' + imageUrl)
       return '';
     },
   })

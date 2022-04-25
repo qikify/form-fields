@@ -2,7 +2,7 @@
 extends ../Base/InputBase.pug
 block input
   .vfield__image-upload-wrapper
-  input.vfield__control.mb-3(
+  input.vfield__control(
     type="file",
     :id="`${name}-image-upload`"
     @change="onChangeImage"
