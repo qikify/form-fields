@@ -1,5 +1,5 @@
 {
-  "name": "vue-fields",
+  "name": "@qikify/vue-fields",
   "private": true,
   "version": "0.0.1",
   "scripts": {
@@ -9,9 +9,7 @@
     "preview": "vite preview"
   },
   "description": "Form Fields for Vue 3",
-  "author": {
-    "name": "Qikify"
-  },
+  "author": "Qikify",
   "keywords": [
     "vue",
     "vuejs",
@@ -56,7 +54,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/qikify/vue-fields.git"
+    "url": "git+https://github.com/qikify/vue-fields.git"
   },
   "bugs": {
     "url": "https://github.com/qikify/vue-fields/issues"
