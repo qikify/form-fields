@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "test:unit": "vitest --environment jsdom",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,6 +19,7 @@
     "@vue/eslint-config-typescript": "^10.0.0",
     "eslint": "^8.13.0",
     "eslint-plugin-vue": "^8.6.0",
+    "jsdom": "^19.0.0",
     "sass": "^1.50.0",
     "ts-dedent": "^2.2.0",
     "typescript": "^4.5.4",

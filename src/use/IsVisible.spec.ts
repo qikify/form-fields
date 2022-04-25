@@ -6,6 +6,4 @@ describe('isVisible', () => {
     expect(isVisible).toBeDefined();
     expect(typeof isVisible).toBe('function');
   });
-
-  it('should prevent if there is no dependnecy');
 });
