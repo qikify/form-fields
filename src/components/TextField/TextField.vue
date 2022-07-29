@@ -2,8 +2,9 @@
 extends ../Base/InputBase.pug
 block input
   input.vfield__control(
-    type="text"
-    v-model="localValue"
+    type="text",
+    v-model="localValue",
+    :type="fieldType",
   )
 </template>
 <script setup lang="ts">
@@ -34,7 +35,9 @@ interface Emits {
   (event: 'update:modelValue', value: string): void
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  fieldType: 'text',
+});
 const emits = defineEmits<Emits>();
 const localValue = useLocalValue(props, emits, null);
 const fieldId = useFieldId();

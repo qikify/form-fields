@@ -1,10 +1,7 @@
 <template lang="pug">
 extends ../Base/InputBase.pug
 block input
-  pre before
-  pre {{ localValue }}
-  pre after
-  select.vfield__control(
+  select.vfield__select(
     v-model="localValue"
   )
     option(value="null", disabled) {{ placeholder }}
