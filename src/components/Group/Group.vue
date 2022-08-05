@@ -5,9 +5,9 @@ block input
     v-for="field in fields"
   )
     VField(
-      v-if="isVisible(data, field)",
+      v-if="isVisible(localValue, field)",
       :option="{...field, group: name}",
-      v-model="data[field.name]"
+      v-model="localValue[field.name]"
     )
 </template>
 <script lang="ts" setup>
@@ -43,15 +43,4 @@ const emits = defineEmits<Emits>();
 const fieldId = useFieldId();
 const fieldClass = useFieldClass(props);
 const localValue = useLocalValue(props, emits, null);
-
-const defaultData = props.fields.reduce((acc: any, field: any) => {
-  if (field.defaultValue) {
-    acc[field.name] = field.defaultValue;
-  }
-
-  return acc;
-}, {});
-
-const data = reactive(defaultData);
-localValue.value = data;
 </script>

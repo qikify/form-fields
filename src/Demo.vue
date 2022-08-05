@@ -230,6 +230,16 @@ const defaultData = options.value.reduce((acc: any, option) => {
     acc[option.name] = option.defaultValue;
   }
 
+  if (option.type === 'Group') {
+    acc[option.name] = option.fields.reduce((acc: any, field: any) => {
+      if (field.defaultValue) {
+        acc[field.name] = field.defaultValue;
+      }
+
+      return acc;
+    }, {});
+  }
+
   return acc;
 }, {});
 
