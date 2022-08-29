@@ -11,3 +11,4 @@ export * from './ImageUpload';
 export * from './TextArea';
 export * from './Divider';
 export * from './Group';
+export * from './Slider';

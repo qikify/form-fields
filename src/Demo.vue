@@ -37,6 +37,15 @@ const options = ref([
     ],
   },
   {
+    name: 'slider',
+    type: 'Slider',
+    label: 'Slider',
+    defaultValue: "10",
+    min: "-100",
+    max: "100",
+    step: "1",
+  },
+  {
     name: 'radio_image',
     type: 'RadioImage',
     heading: 'RadioImage',
