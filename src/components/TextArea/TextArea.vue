@@ -4,6 +4,7 @@ block input
   textarea.vfield__control(
     v-model="localValue"
     :rows="rows || 3"
+    :disabled="isDisable"
   )
 </template>
 <script setup lang="ts">
@@ -29,6 +30,8 @@ interface Props {
   readonly?: boolean;
 
   rows?: number;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

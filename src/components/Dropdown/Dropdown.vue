@@ -3,6 +3,7 @@ extends ../Base/InputBase.pug
 block input
   select.vfield__select(
     v-model="localValue"
+    :disabled="isDisable"
   )
     option(value="null", disabled) {{ placeholder }}
     option(
@@ -37,6 +38,8 @@ interface Props {
     label: string;
     value: string;
   }>;
+
+  isDisable?: boolean;
 }
 
 export interface Emits {

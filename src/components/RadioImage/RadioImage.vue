@@ -9,6 +9,7 @@ block input
         :id="(group ? group + '-' : '') + name + '-' + option.value"
         v-model="localValue"
         :value="option.value"
+        :disabled="isDisable"
       )
       label.vfield__btn(
         :for="(group ? group + '-' : '') + name + '-' + option.value"
@@ -44,6 +45,8 @@ interface Props {
     value: string;
     image: string;
   }>;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

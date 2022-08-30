@@ -1,7 +1,7 @@
 <template lang="pug">
 component(
   :is="generateFieldByType(option.type)"
-  v-bind="option"
+  v-bind="{...option, isDisable}"
 )
   template(
     v-for="slot, index in option.slots",
@@ -20,9 +20,10 @@ const globalComponents = Object.keys(
 
 interface Props {
   option: Record<string, any>,
+  isDisable?: boolean,
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {isDisable: false});
 const generateFieldByType = (ftype: string) => {
   if (globalComponents.includes(ftype)) {
     return ftype;

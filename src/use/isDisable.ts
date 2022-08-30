@@ -1,14 +1,14 @@
-const isVisible = (
+const isDisable = (
   data: Record<string, any>,
   option: Record<string, any>,
 ): boolean => {
-  // #1. No dependency
-  if (!option.dependency) {
-    return true;
-  }
+  // #1. No disable
+  if (!option.disable) return false;
 
 
-  // #2. Has dependency
+  // #2. Has disable
+  if (option.disable === true) return true
+
 
   // There're 2 types of value
   //  - primary (1): String/Number/Boolean
@@ -30,7 +30,7 @@ const isVisible = (
     value_not_in: valueNotIn,
     value_has: valueHas,
     value_not_has: valueNotHas,
-  } = option.dependency;
+  } = option.disable;
 
   if (!name) {
     throw new Error(`Option ${option.name}: dependency element is undefined`);
@@ -106,4 +106,4 @@ const isVisible = (
   return false;
 };
 
-export default isVisible;
+export default isDisable;

@@ -4,9 +4,10 @@ block input
   .vfield__toggle-wrapper
     .vfield__check.vfield__switch
       input.vfield__check-input(
-          type='checkbox'
-          v-model="localValue"
-          :id="`${group ? group + '-' : ''}${name}-toggle`"
+        type='checkbox'
+        v-model="localValue"
+        :id="`${group ? group + '-' : ''}${name}-toggle`"
+        :disabled="isDisable"
       )
       label.vfield__check-label(:for="`${group ? group + '-' : ''}${name}-toggle`") {{valueLabel}}
 </template>
@@ -30,6 +31,8 @@ interface Props {
   group?:string;
 
   valueLabel: string;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

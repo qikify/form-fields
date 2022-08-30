@@ -16,6 +16,7 @@ block input
     :max="max"
     :step="step"
     v-model="localValue"
+    :disabled="isDisable"
   )
 </template>
 <script setup lang="ts">
@@ -43,6 +44,8 @@ interface Props {
   min?: string;
   max?: string;
   step?: string;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

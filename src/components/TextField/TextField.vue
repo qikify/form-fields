@@ -5,6 +5,7 @@ block input
     type="text",
     v-model="localValue",
     :type="fieldType",
+    :disabled="isDisable"
   )
 </template>
 <script setup lang="ts">
@@ -29,6 +30,8 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

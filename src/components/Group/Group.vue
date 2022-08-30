@@ -8,6 +8,7 @@ block input
       v-if="isVisible(localValue, field)",
       :option="{...field, group: name}",
       v-model="localValue[field.name]"
+      :isDisable="isDisable(localValue, field)"
     )
 </template>
 <script lang="ts" setup>
@@ -15,6 +16,7 @@ import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
 import { reactive } from 'vue';
 import VField from '../../VField.vue';
 import isVisible from '../../use/IsVisible';
+import isDisable from '../../use/IsDisable';
 
 interface Props {
   type: string;

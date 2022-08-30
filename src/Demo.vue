@@ -9,6 +9,7 @@ div
       v-if="isVisible(data, option)"
       :option="option",
       v-model="data[option.name]"
+      :isDisable="isDisable(data, option)"
     )
 
   pre {{ data }}
@@ -17,6 +18,7 @@ div
 import { ref, reactive } from 'vue';
 import VField from './VField.vue';
 import isVisible from './use/isVisible';
+import { isDisable } from './use';
 
 const name = ref('custom input say hi');
 const options = ref([
@@ -44,6 +46,10 @@ const options = ref([
     min: "-100",
     max: "100",
     step: "1",
+    disable: {
+      name: 'form_type',
+      value: 2,
+    }
   },
   {
     name: 'radio_image',

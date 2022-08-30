@@ -6,12 +6,14 @@ block input
         type='color'
         v-model="localValue"
         :title="label"
+        :disabled="isDisable"
     )
     input.vfield__control(
       type='text'
       :placeholder="placeholder"
       :aria-label="label"
       v-model="localValue"
+      :disabled="isDisable"
     )
 </template>
 <script lang="ts" setup>
@@ -31,6 +33,8 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

@@ -7,6 +7,7 @@ block input
     :id="`${name}-image-upload`"
     @change="onChangeImage"
     accept="image/*"
+    :disabled="isDisable"
   )
   .vfield__img-peview-wrapper(v-if="localValue")
     .vfield__btn.vfield__btn--close(@click="removeImage(`${name}-image-upload`)")
@@ -31,6 +32,8 @@ interface Props {
   placeholder?: string;
   description?: string;
   readonly?: boolean;
+
+  isDisable?: boolean;
 }
 
 interface Emits {

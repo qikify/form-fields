@@ -9,6 +9,7 @@ block input
             :value="option.value"
             v-model="localValue"
             :id="`${group ? group + '-' : ''}${name}-${option.value}`"
+            :disabled="isDisable"
         )
         label.vfield__check-label(
             :for="`${group ? group + '-' : ''}${name}-${option.value}`"
@@ -37,6 +38,8 @@ interface Props {
     label: string;
     value: string;
   }>;
+
+  isDisable?: boolean;
 }
 
 interface Emits {
