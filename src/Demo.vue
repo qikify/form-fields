@@ -11,6 +11,13 @@ div
       v-model="data[option.name]"
       :isDisable="isDisable(data, option)"
     )
+      template(#tooltip)
+        img(
+          src="./assets/icons/question.svg"
+          v-if="option.tooltip"
+          v-tooltip="option.tooltip"
+          style="width: 16px; height: 16px; margin-left: 5px;"
+        )
 
   pre {{ data }}
 </template>
@@ -49,7 +56,8 @@ const options = ref([
     disable: {
       name: 'form_type',
       value: 2,
-    }
+    },
+    tooltip: 'This is a tooltip of slider',
   },
   {
     name: 'radio_image',
@@ -87,6 +95,7 @@ const options = ref([
       name: 'radio_image',
       value: 'value3',
     },
+    tooltip: 'This is a tooltip of image upload',
   },
   {
     name: 'radio_button',
@@ -116,21 +125,25 @@ const options = ref([
     type: 'Radio',
     heading: 'Radio',
     label: 'Radio',
+    tooltip: 'This is a tooltip of radio',
     options: [
       {
         label: 'Option 1',
         value: 'value1',
         id: 'option-1',
+        tooltip: 'This is a tooltip of option 1',
       },
       {
         label: 'Option 2',
         value: 'value2',
         id: 'option-2',
+        tooltip: 'This is a tooltip of option 2',
       },
       {
         label: 'Option 3',
         value: 'value3',
         id: 'option-3',
+        tooltip: 'This is a tooltip of option 3',
       },
     ],
   },
@@ -263,4 +276,5 @@ const data = reactive(defaultData);
 
 <style lang="scss">
 @import 'bootstrap/scss/bootstrap';
+@import 'floating-vue/dist/style.css';
 </style>
