@@ -3,6 +3,8 @@ component(
   :is="generateFieldByType(option.type)"
   v-bind="{...option, isDisable}"
 )
+  template(#tooltip)
+    slot(name="tooltip")
   template(
     v-for="slot, index in option.slots",
     :key="index",
@@ -23,7 +25,7 @@ interface Props {
   isDisable?: boolean,
 }
 
-const props = withDefaults(defineProps<Props>(), {isDisable: false});
+const props = withDefaults(defineProps<Props>(), { isDisable: false });
 const generateFieldByType = (ftype: string) => {
   if (globalComponents.includes(ftype)) {
     return ftype;

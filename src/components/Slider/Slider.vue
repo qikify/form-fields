@@ -9,6 +9,7 @@ block heading
     template(v-if="isRequired")
       span.vfield__asterisk *
     span(v-html="`: ${localValue}`")
+    slot(name="tooltip")
 block input
   input.vfield__slider(
     type='range'

@@ -11,6 +11,7 @@
         span(v-html="label")
         template(v-if="isRequired")
           span.vfield__asterisk *
+        slot(name="tooltip")
 
   slot(name="description")
     .vfield__description(
