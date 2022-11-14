@@ -2,7 +2,6 @@
 extends ../Base/InputBase.pug
 block input
   input.vfield__control(
-    type="text",
     v-model="localValue",
     :type="fieldType",
     :disabled="isDisable"
