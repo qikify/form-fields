@@ -15,7 +15,7 @@ block input
             :for="`${group ? group + '-' : ''}${name}-${option.value}`"
         ) {{option.label}}
           slot(
-            :name="`radioTooltip_${index}`"
+            :name="`tooltip-${option.value}`"
           )
 </template>
 <script lang="ts" setup>

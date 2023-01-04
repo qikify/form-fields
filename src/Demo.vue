@@ -20,8 +20,8 @@ div
         )
       template(
         v-for="option, index in option.options" 
-        :key="smallOption.id" 
-        v-slot:[`radioTooltip_${index}`]
+        :key="option.id" 
+        v-slot:[`tooltip-${option.value}`]
       )
         img(
             src="./assets/icons/question.svg"
