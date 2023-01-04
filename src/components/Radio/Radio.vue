@@ -2,7 +2,7 @@
 extends ../Base/InputBase.pug
 block input
   .vfield__radio-wrapper
-    .vfield__check(v-for="option, index in options")
+    .vfield__check(v-for="option in options")
         input.vfield__check-input(
             type='radio'
             :name='name'
@@ -13,7 +13,8 @@ block input
         )
         label.vfield__check-label(
             :for="`${group ? group + '-' : ''}${name}-${option.value}`"
-        ) {{option.label}}
+        ) 
+          | {{option.label}}
           slot(
             :name="`tooltip-${option.value}`"
           )
