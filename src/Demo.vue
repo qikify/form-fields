@@ -18,6 +18,17 @@ div
           v-tooltip="option.tooltip"
           style="width: 16px; height: 16px; margin-left: 5px;"
         )
+      template(
+        v-for="option, index in option.options" 
+        :key="option.id" 
+        v-slot:[`tooltip-${option.value}`]
+      )
+        img(
+            src="./assets/icons/question.svg"
+            v-if="option.tooltip"
+            v-tooltip="option.tooltip"
+            style="width: 16px; height: 16px; margin-left: 5px;"
+          )
 
   pre {{ data }}
 </template>

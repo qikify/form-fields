@@ -13,7 +13,11 @@ block input
         )
         label.vfield__check-label(
             :for="`${group ? group + '-' : ''}${name}-${option.value}`"
-        ) {{option.label}}
+        ) 
+          | {{option.label}}
+          slot(
+            :name="`tooltip-${option.value}`"
+          )
 </template>
 <script lang="ts" setup>
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';

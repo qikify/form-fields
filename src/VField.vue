@@ -6,6 +6,15 @@ component(
   template(#tooltip)
     slot(name="tooltip")
   template(
+    v-for="item, index in option.options" 
+    :key="index"
+    v-slot:[`tooltip-${item.value}`]
+  )
+    slot(
+      v-if="option.type === 'Radio'"
+      :name="`tooltip-${item.value}`"
+    )
+  template(
     v-for="slot, index in option.slots",
     :key="index",
     v-slot:[slot.name],
