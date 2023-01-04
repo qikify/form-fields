@@ -6,6 +6,14 @@ component(
   template(#tooltip)
     slot(name="tooltip")
   template(
+    v-for="option, index in option.options" 
+    :key="index"
+    v-slot:[`radioTooltip_${index}`]
+  )
+    slot(
+      :name="`radioTooltip_${index}`"
+    )
+  template(
     v-for="slot, index in option.slots",
     :key="index",
     v-slot:[slot.name],
