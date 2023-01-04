@@ -3,21 +3,21 @@ extends ../Base/InputBase.pug
 block input
   .vfield__radio-wrapper
     .vfield__check(v-for="option in options")
-        input.vfield__check-input(
-            type='radio'
-            :name='name'
-            :value="option.value"
-            v-model="localValue"
-            :id="`${group ? group + '-' : ''}${name}-${option.value}`"
-            :disabled="isDisable"
+      input.vfield__check-input(
+        type='radio'
+        :name='name'
+        :value="option.value"
+        v-model="localValue"
+        :id="`${group ? group + '-' : ''}${name}-${option.value}`"
+        :disabled="isDisable"
+      )
+      label.vfield__check-label(
+        :for="`${group ? group + '-' : ''}${name}-${option.value}`"
+      )
+        | {{option.label}}
+        slot(
+          :name="`tooltip-${option.value}`"
         )
-        label.vfield__check-label(
-            :for="`${group ? group + '-' : ''}${name}-${option.value}`"
-        ) 
-          | {{option.label}}
-          slot(
-            :name="`tooltip-${option.value}`"
-          )
 </template>
 <script lang="ts" setup>
 import { useLocalValue, useFieldId, useFieldClass } from '@/utilities/hooks';
@@ -41,6 +41,7 @@ interface Props {
   options: Array<{
     label: string;
     value: string;
+    tooltip?: string;
   }>;
 
   isDisable?: boolean;
