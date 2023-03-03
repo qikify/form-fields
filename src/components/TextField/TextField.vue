@@ -4,7 +4,8 @@ block input
   input.vfield__control(
     v-model="localValue",
     :type="fieldType",
-    :disabled="isDisable"
+    :disabled="isDisable",
+    :placeholder="placeholder",
   )
 </template>
 <script setup lang="ts">

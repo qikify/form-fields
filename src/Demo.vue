@@ -43,7 +43,15 @@ const options = ref([
     name: 'form_label',
     type: 'TextField',
     heading: 'Option Title',
-    defaultValue: 'Just a value',
+    defaultValue: '',
+    placeholder: 'Enter a value',
+  },
+  {
+    name: 'form_label',
+    type: 'TextArea',
+    heading: 'Option Title',
+    defaultValue: '',
+    placeholder: 'Enter a value',
   },
   {
     name: 'form_type',
