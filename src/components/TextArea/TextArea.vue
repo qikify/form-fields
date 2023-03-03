@@ -5,6 +5,7 @@ block input
     v-model="localValue"
     :rows="rows || 3"
     :disabled="isDisable"
+    :placeholder="placeholder"
   )
 </template>
 <script setup lang="ts">
